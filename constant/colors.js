@@ -1,0 +1,22 @@
+export const colors = {
+    primaryColor: '#3a85bf',
+    secondrayColor: '#144e76',
+    green: '#83D894',
+    red: '#F77E76',
+    white: '#5ECDA3',
+    extraWhite: '#ffffff',
+    extraDark: '#707070',
+    lightGrey: '#CCCCCC',
+    extraLightGrey: "#989898",
+    Grey: '#DEDEDE',
+    newGrey: "#B1B1B1",
+    aqua: '#D2FEED',
+    lightNewGrey: '#C1C1C1',
+    Sky: '#5ADDFF',
+    lightGreen: '#45BD62',
+    purple: '#6243CE',
+    yellow: '#FFD138',
+    pink: '#F337DA',
+    newLightGreen: '#5EFF38',
+    darkRed: '#FF0000'
+}
