@@ -1,29 +1,25 @@
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
+import styled from "styled-components";
+import { colors } from "../../../constant/colors";
 
-import React from 'react'
-import { View, Text, StyleSheet } from 'react-native';
+const HeaderContainer = styled.View`
+  padding-top: 2px;
+  padding-bottom: 2px;
+`;
 
-import { colors } from '../../../constant/colors'
+const Title = styled.Text`
+  font-size: 18px;
+  font-family: Montserrat-SemiBold;
+  color: ${(props) => props.red};
+`;
+
 const Headers = ({ title }) => {
-    return <View style={styles.headerContainer}>
-        <View style={styles.headerBorder}>
-            <Text style={styles.textStyle}>{title}</Text>
-        </View>
-    </View>
-}
+  return (
+    <HeaderContainer>
+      <Title red={colors.red}>{title}</Title>
+    </HeaderContainer>
+  );
+};
 
-export default Headers
-const styles = StyleSheet.create({
-    headerContainer: {
-        marginHorizontal: 16,
-        paddingVertical: 2,
-
-
-    },
-    textStyle: {
-        fontSize: 25,
-        fontFamily: 'Montserrat-SemiBold',
-        color: colors.red,
-
-    },
-
-})
+export default Headers;

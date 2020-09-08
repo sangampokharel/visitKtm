@@ -1,42 +1,34 @@
-import React from 'react'
-import { Text, View, StyleSheet } from 'react-native';
-
-import { Feather } from '@expo/vector-icons';
-import { colors } from '../../../constant/colors';
+import React from "react";
+import styled from "styled-components";
+import { Feather } from "@expo/vector-icons";
+import { colors } from "../../../constant/colors";
 const Essentials = ({ icon, title }) => {
-    return (
-        <View>
-            <View style={styles.container}>
-                <Feather name={icon} size={32} color={colors.red} />
-                <Text style={styles.text}>{title}</Text>
-            </View>
+  const Container = styled.View`
+    padding: 10px;
+    width: 150px;
+    height: 100px;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    margin: 1px;
+    elevation: 1;
+  `;
 
-        </View>
-    )
-}
+  const Title = styled.Text`
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 10px;
+    color: ${(props) => props.red};
+    font-family: Montserrat-Medium;
+  `;
+
+  return (
+    <Container red={colors.red}>
+      <Feather name={icon} size={32} color={colors.red} />
+      <Title red={colors.red}>{title}</Title>
+    </Container>
+  );
+};
 
 export default Essentials;
-
-const styles = StyleSheet.create({
-    container: {
-        borderWidth: 1,
-        borderColor: colors.red,
-        padding: 10,
-        width: 150,
-        height: 100,
-        borderRadius: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-
-
-    },
-    Feather: {
-        paddingVertical: 10
-    },
-    text: {
-        textAlign: 'center',
-        marginVertical: 10,
-        color: colors.red,
-        fontFamily: 'Montserrat-Medium'
-    }
-})

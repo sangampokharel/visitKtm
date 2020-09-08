@@ -7,7 +7,7 @@ import { Locations } from '../../data/data'
 const Maps = () => {
 
     const [currentlocation, setCurrentLocation] = useState(null);
-    const [locations, setLocations] = useState(Locations)
+    // const [locations, setLocations] = useState(Locations)
 
     //ask perssion which gives popup
     const _getLocation = async () => {

@@ -1,75 +1,78 @@
-import React, { useState, useEffect } from 'react'
-import { View, Platform, Animated, Image, ImageBackground, Text, StyleSheet, } from 'react-native';
-import { widthToDp, heightToDp } from '../../../utlis/Responsive';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import { colors } from '../../../constant/colors';
-const AdvancedCard = ({ name, width, titleFontSize, descFontSize, description, avatar, height, nextScreen }) => {
+import React, { useState, useEffect } from "react";
+import {
+  View,
+  Platform,
+  Animated,
+  Image,
+  ImageBackground,
+  TouchableOpacity,
+  Text,
+  StyleSheet,
+  TouchableWithoutFeedback,
+} from "react-native";
+import styled from "styled-components";
+import { colors } from "../../../constant/colors";
+const AdvancedCard = ({ name, description, avatar }) => {
+  //styled components
+  const Title = styled.Text`
+    font-family: Montserrat-SemiBold;
+    font-size: 16px;
+    color: ${(props) => props.red};
+  `;
 
-    const [fadeAnimation] = useState(new Animated.Value(0));
+  const SubTitle = styled.Text`
+    font-size: 12px;
+    color: ${(props) => props.extraDark};
+    font-family: Montserrat-Medium;
+    margin-top: 20px;
+    width: 80%;
+  `;
 
-    useEffect(() => {
-        Animated.timing(fadeAnimation, {
-            toValue: 1,
-            duration: 2000
-        }).start();
-    }, [])
-    return (
+  const TouchableOpacity = styled.TouchableOpacity`
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+    width: 300px;
+    margin-right: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    elevation: 1;
+  `;
 
+  const TextContainer = styled.View`
+    padding: 12px;
+  `;
 
-        <TouchableWithoutFeedback onPress={nextScreen} style={{
-            flexDirection: 'row',
-            borderRadius: 10,
-            ...Platform.select({
-                'android': {
-                    elevation: 10,
-                },
-                'ios': {
-                    shadowColor: '#000',
-                    shadowOffset: { width: 2, },
-                    shadowOpacity: 0.4,
-                    // shadowRadius: 10
-                }
-            }),
-            width: 300,
-            margin: 10,
-            marginVertical: 20
-        }}>
-            <View >
-                <Image source={{ uri: avatar }} resizeMode="cover" style={{ width: 130, borderTopLeftRadius: 10, borderBottomLeftRadius: 10, marginLeft: 3, height: 200 }} />
-            </View>
-            <View style={styles.textContainer}>
-                <Text style={styles.textHeaderStyle}>{name}</Text>
-                <Text style={styles.textSubtitleStyle}>{description}</Text>
-            </View>
+  const Image = styled.Image`
+    width: 130px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height: 200px;
+  `;
 
+  //logic
 
-        </TouchableWithoutFeedback>
+  const [fadeAnimation] = useState(new Animated.Value(0));
 
-    )
-}
+  useEffect(() => {
+    Animated.timing(fadeAnimation, {
+      toValue: 1,
+      duration: 2000,
+    }).start();
+  }, []);
+  return (
+    <TouchableOpacity activeOpacity={0.75} onPress={() => {}}>
+      <View>
+        <Image source={{ uri: avatar }} />
+      </View>
+      <TextContainer>
+        <Title red={colors.red}>{name}</Title>
+        <SubTitle numberOfLines={4} extraDark={colors.extraDark}>
+          {description}
+        </SubTitle>
+      </TextContainer>
+    </TouchableOpacity>
+  );
+};
 
-const styles = StyleSheet.create({
-
-    textContainer: {
-        paddingVertical: 10,
-        paddingHorizontal: 10,
-        flexDirection: 'column',
-        flexShrink: 1,
-    },
-    textHeaderStyle: {
-        fontFamily: 'Montserrat-SemiBold',
-        fontSize: 30,
-        color: colors.red,
-
-    },
-    textSubtitleStyle: {
-        fontSize: 12,
-        color: colors.extraDark,
-        fontFamily: 'Montserrat-Medium',
-        marginTop: 20,
-        textAlign: 'left'
-
-    }
-})
-
-export default AdvancedCard
+export default AdvancedCard;

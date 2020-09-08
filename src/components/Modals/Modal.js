@@ -1,21 +1,7 @@
-import React from 'react'
-import { Overlay } from 'react-native-elements';
-
+import React from "react";
 
 const Modal = ({ visible, closeModal, children }) => {
+  return <Text></Text>;
+};
 
-    return (
-        <Overlay
-            isVisible={visible}
-            windowBackgroundColor="rgba(0, 0, 0, 0.5)"
-            borderRadius={10}
-            onBackdropPress={closeModal}
-            width={350}
-
-        >
-            {children}
-        </Overlay>
-    )
-}
-
-export default Modal
+export default Modal;
