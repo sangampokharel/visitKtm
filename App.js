@@ -3,8 +3,6 @@ import { View, Text, Platform, YellowBox } from "react-native";
 import { AppLoading } from "expo";
 import { useFonts } from "@use-expo/font";
 import DashboardRoute from "./src/Routes/DashboardRoutes";
-import { Provider } from "react-redux";
-import { store } from "./src/store/store";
 export default function App() {
   YellowBox.ignoreWarnings([
     // 'Warning: `flexWrap: `wrap`` is not supported',
@@ -29,11 +27,7 @@ export default function App() {
   if (!fontsLoaded) {
     return <AppLoading />;
   } else {
-    return (
-      <Provider store={store}>
-        <DashboardRoute />
-      </Provider>
-    );
+    return <DashboardRoute />;
   }
 }
 

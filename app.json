@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "visit-kathmandu",
+    "name": "visit kathmandu",
     "slug": "visit-kathmandu",
     "platforms": [
       "ios",
@@ -12,17 +12,24 @@
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "resizeMode": "cover"
     },
+    
     "updates": {
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
       "**/*"
     ],
+   
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.visitktm.visitkathmandu",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.visitktm.visitkathmandu",
+      "versionCode": 1
     }
   }
 }

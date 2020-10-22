@@ -11,6 +11,10 @@ const Container = styled.View`
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 4px;
+  border: 1px solid #ccc;
+  shadow-color: #000;
+  shadow-offset: 0px 2px;
+  shadow-opacity: 0.1;
 `;
 const Avatar = styled.Image`
   width: 200px;

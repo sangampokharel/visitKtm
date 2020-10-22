@@ -1,3 +1,4 @@
+import React from "react";
 import { createAppContainer } from "react-navigation";
 import {
   createBottomTabNavigator,
@@ -29,6 +30,7 @@ import UsefulInformationScreen from "../screens/UsefulInformationScreen";
 import GettingAroundScreen from "../screens/GettingAroundScreen";
 import MapsCityGuideScreen from "../screens/MapsCityGuideScreen";
 import LocalTipsScreen from "../screens/LocalTipsScreen";
+import { AntDesign, Feather } from "@expo/vector-icons";
 
 const DiscoverStack = createStackNavigator(
   {
@@ -101,11 +103,50 @@ const EssentialStack = createStackNavigator(
   }
 );
 
+const PlacesTopNavigator = createMaterialTopTabNavigator(
+  {
+    Places: {
+      screen: AttractionScreen,
+    },
+
+    Malls: {
+      screen: MallsScreen,
+    },
+    Foods: {
+      screen: FoodsScreen,
+    },
+
+    Hotels: {
+      screen: HotelScreen,
+    },
+  },
+  {
+    initialRouteName: "Places",
+    defaultNavigationOptions: {
+      tabBarOptions: {
+        style: {
+          backgroundColor: "white",
+          padding: 0,
+          paddingTop: 34,
+        },
+        labelStyle: {
+          color: "#000",
+          textTransform: "capitalize",
+          fontSize: 16,
+        },
+        indicatorStyle: {
+          backgroundColor: "#000",
+        },
+      },
+    },
+  }
+);
+
 const SearchStack = createStackNavigator(
   {
-    // Attraction: {
-    //   screen: PlacesTopNavigator,
-    // },
+    Attraction: {
+      screen: PlacesTopNavigator,
+    },
 
     AttractionDetails: {
       screen: AttractionDetailsScreen,
@@ -127,7 +168,7 @@ const SearchStack = createStackNavigator(
     },
   },
   {
-    // initialRouteName: "AttractionScreen",
+    initialRouteName: "Attraction",
     defaultNavigationOptions: {
       headerShown: false,
       ...TransitionPresets.SlideFromRightIOS,
@@ -135,69 +176,108 @@ const SearchStack = createStackNavigator(
   }
 );
 
-const BottomTabNavigator = createBottomTabNavigator({
-  Discover: {
-    screen: DiscoverStack,
-  },
+const BottomTabNavigator = createBottomTabNavigator(
+  {
+    Discover: {
+      screen: DiscoverStack,
+      navigationOptions: {
+        tabBarIcon: () => {
+          return <AntDesign name="home" size={25} />;
+        },
+      },
+    },
 
-  Essential: {
-    screen: EssentialStack,
-  },
+    Essential: {
+      screen: EssentialStack,
+      navigationOptions: {
+        tabBarIcon: () => {
+          return <Feather name="briefcase" size={25} />;
+        },
+      },
+    },
 
-  Info: {
-    screen: SearchStack,
+    Info: {
+      screen: SearchStack,
+      navigationOptions: {
+        tabBarIcon: () => {
+          return <AntDesign name="infocirlceo" size={25} />;
+        },
+      },
+    },
   },
-});
-
-const PlacesTopNavigator = createMaterialTopTabNavigator({
-  Places: {
-    screen: AttractionScreen,
-  },
-
-  Malls: {
-    screen: MallsScreen,
-  },
-  Foods: {
-    screen: FoodsScreen,
-  },
-
-  Hotels: {
-    screen: HotelScreen,
-  },
-});
+  {
+    initialRouteName: "Info",
+    defaultNavigationOptions: {
+      tabBarOptions: {
+        showLabel: false,
+      },
+    },
+  }
+);
 
 EssentialStack.navigationOptions = ({ navigation }) => {
   let tabBarVisible = true;
-  if (
-    navigation.state.routeName === "CurrencyConverter" ||
-    navigation.state.routeName === "HandyTips" ||
-    navigation.state.routeName === "AboutUs" ||
-    navigation.state.routeName === "UsefulContacts"
-  ) {
-    tabBarVisible = false;
+  // console.log("from nav", navigation.state);
+  if (navigation.state.routes.length > 1) {
+    navigation.state.routes.map((item, i) => {
+      if (
+        item.routeName == "CurrencyConverter" ||
+        item.routeName == "HandyTips" ||
+        item.routeName == "AboutUs" ||
+        item.routeName == "UsefulContacts"
+      ) {
+        tabBarVisible = false;
+      } else {
+        tabBarVisible = true;
+      }
+    });
   }
 
-  return {
-    tabBarVisible,
-  };
+  return { tabBarVisible };
 };
 
 HandyTipsStack.navigationOptions = ({ navigation }) => {
   let tabBarVisible = true;
-  console.log(navigation.state.routeName);
-  if (
-    navigation.state.routeName === "UsefulInfo" ||
-    navigation.state.routeName === "HandyTipsName" ||
-    navigation.state.routeName === "GettingAround" ||
-    navigation.state.routeName === "MapsCityGuide" ||
-    navigation.state.routeName === "LocalTips"
-  ) {
-    tabBarVisible = false;
+
+  if (navigation.state.routes.length > 1) {
+    navigation.state.routes.map((item, i) => {
+      if (
+        item.routeName === "UsefulInfo" ||
+        item.routeName === "HandyTips" ||
+        item.routeName === "GettingAround" ||
+        item.routeName === "MapsCityGuide" ||
+        item.routeName === "LocalTips"
+      ) {
+        tabBarVisible = false;
+      } else {
+        tabBarVisible = true;
+      }
+    });
   }
 
-  return {
-    tabBarVisible,
-  };
+  return { tabBarVisible };
+};
+
+SearchStack.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = true;
+
+  if (navigation.state.routes.length > 1) {
+    navigation.state.routes.map((item, i) => {
+      if (
+        item.routeName === "AttractionDetails" ||
+        item.routeName === "MallsDetails" ||
+        item.routeName === "FoodDetails" ||
+        item.routeName === "HotelDetails" ||
+        item.routeName === "MapScreen"
+      ) {
+        tabBarVisible = false;
+      } else {
+        tabBarVisible = true;
+      }
+    });
+  }
+
+  return { tabBarVisible };
 };
 
 export default createAppContainer(BottomTabNavigator);

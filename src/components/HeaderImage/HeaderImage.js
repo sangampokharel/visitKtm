@@ -6,7 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { colors } from "../../../constant/colors";
 
 const HeaderImage = ({ avatar, navigation }) => {
@@ -16,16 +16,17 @@ const HeaderImage = ({ avatar, navigation }) => {
         source={{ uri: avatar }}
         style={[styles.container, { width: "100%", height: 200 }]}
       >
-        <View style={{ backgroundColor: "rgba(0,0,0,0.2)", flex: 1 }}>
+        <View style={{ backgroundColor: "rgba(0,0,0,0.4)", flex: 1 }}>
           <TouchableOpacity
             style={{ marginLeft: 10 }}
             onPress={() => navigation.pop()}
           >
-            <AntDesign
+            <Ionicons
               style={styles.iconStyle}
-              name="back"
-              color={colors.red}
+              name="md-arrow-back"
+              color={colors.white}
               size={30}
+              style={{ paddingTop: 40 }}
             />
           </TouchableOpacity>
           <View style={styles.buttonStyle}>

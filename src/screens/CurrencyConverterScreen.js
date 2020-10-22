@@ -28,6 +28,11 @@ const TextInput = styled.TextInput`
   padding: 10px 30px;
   margin: 0px 10px;
   width: 45%;
+  border: 1px solid #ccc;
+  elevation: 1;
+  shadow-color: #000;
+  shadow-offset: 0px 2px;
+  shadow-opacity: 0.1;
   background: ${(props) => props.white};
 `;
 

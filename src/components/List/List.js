@@ -20,7 +20,7 @@ const List = ({ data, routeName, navigation }) => {
                 avatar={item.avatar}
                 nextScreen={() =>
                   navigation.navigate(routeName, {
-                    id: item.id,
+                    item: item,
                   })
                 }
               />
@@ -31,7 +31,7 @@ const List = ({ data, routeName, navigation }) => {
               avatar={item.avatar}
               nextScreen={() =>
                 navigation.navigate(routeName, {
-                  id: item.id,
+                  item: item,
                 })
               }
             />;

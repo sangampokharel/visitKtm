@@ -25,7 +25,7 @@ const AdvancedCard = ({ name, description, avatar }) => {
     color: ${(props) => props.extraDark};
     font-family: Montserrat-Medium;
     margin-top: 20px;
-    width: 80%;
+    width: 70%;
   `;
 
   const TouchableOpacity = styled.TouchableOpacity`
@@ -36,7 +36,11 @@ const AdvancedCard = ({ name, description, avatar }) => {
     margin-right: 16px;
     margin-top: 20px;
     margin-bottom: 20px;
+    border: 1px solid #ccc;
     elevation: 1;
+    shadow-color: #000;
+    shadow-offset: 0px 2px;
+    shadow-opacity: 0.1;
   `;
 
   const TextContainer = styled.View`

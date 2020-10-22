@@ -7,7 +7,7 @@ import {
   Text,
   TouchableWithoutFeedback,
 } from "react-native";
-
+import CircularCard from "../components/CircularCard/CircularCard";
 import { widthToDp, heightToDp } from "../../utlis/Responsive";
 import Cards from "../components/Cards/Cards";
 import AdvancedCard from "../components/AdvancedCard/AdvancedCard";
@@ -91,11 +91,7 @@ const DiscoverScreen = ({ navigation }) => {
     margin-bottom: 30px;
   `;
 
-  const Container = styled.View`
-    margin: 0 16px;
-
-    padding-top: 40px;
-  `;
+  const Container = styled.View``;
 
   const SecondaryContainer = styled.View`
     margin: 0 16px;
@@ -103,12 +99,27 @@ const DiscoverScreen = ({ navigation }) => {
     padding-top: 20px;
   `;
 
+  const ItemSeperate = styled.View`
+    width: 50px;
+    background-color: red;
+  `;
+
   return (
     <SafeAreaView color={colors.white}>
       <ScrollView>
         <Container>
-          <Headers title="Discover Kathmandu" />
+          <FlatList
+            numColumns={keyNum}
+            data={Discoveries}
+            renderItem={({ item }) => (
+              <CircularCard title={item.title} avatar={item.avatar} />
+            )}
+            keyExtractor={(item, index) => index.toString()}
+          />
 
+          {/**
+
+          <Headers title="Discover Kathmandu" />
           <FlatList
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -122,7 +133,7 @@ const DiscoverScreen = ({ navigation }) => {
             )}
             keyExtractor={(item, index) => index.toString()}
           />
-        </Container>
+            
         <SecondaryContainer>
           <Headers title="Local Recommendations" />
           <FlatList
@@ -135,6 +146,8 @@ const DiscoverScreen = ({ navigation }) => {
             showsHorizontalScrollIndicator={true}
           />
         </SecondaryContainer>
+         */}
+        </Container>
       </ScrollView>
     </SafeAreaView>
   );

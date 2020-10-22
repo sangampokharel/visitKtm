@@ -1,8 +1,9 @@
 export const colors = {
+  // primaryColor: "#3a85bf",
   primaryColor: "#3a85bf",
   secondrayColor: "#144e76",
   green: "#83D894",
-  red: "#F77E76",
+  red: "#000",
   white: "#ffffff",
   extraWhite: "#ffffff",
   extraDark: "#707070",

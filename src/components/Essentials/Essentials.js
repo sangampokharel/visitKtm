@@ -11,7 +11,11 @@ const Essentials = ({ icon, title }) => {
     justify-content: center;
     align-items: center;
     margin: 1px;
+    border: 1px solid #ccc;
     elevation: 1;
+    shadow-color: #000;
+    shadow-offset: 0px 2px;
+    shadow-opacity: 0.1;
   `;
 
   const Title = styled.Text`

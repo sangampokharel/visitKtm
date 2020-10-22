@@ -8,7 +8,6 @@ const Container = styled.View`
   background: ${(props) => props.white};
   padding: 40px 16px;
 `;
-
 const HeaderContainer = styled.View`
   display: flex;
   flex-direction: row;
@@ -20,7 +19,7 @@ const HeaderName = styled.View`
 `;
 
 const MainContainer = styled.View`
-  padding-top: 40px 16px;
+  padding-top: 40px;
 `;
 const Description = styled.Text`
   font-size: 14px;

@@ -12,6 +12,7 @@
     "@react-native-community/masked-view": "0.1.6",
     "@reduxjs/toolkit": "^1.4.0",
     "@use-expo/font": "^2.0.0",
+    "axios": "^0.20.0",
     "expo": "~37.0.3",
     "expo-location": "~8.1.0",
     "expo-permissions": "~8.1.0",
